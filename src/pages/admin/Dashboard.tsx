@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
+=======
+import React, { useState } from 'react';
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { getAllOrders, setOrderDelivered } from '@/data/products';
@@ -6,6 +10,7 @@ import { Check, Package, DollarSign, Users, ChevronRight } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
+<<<<<<< HEAD
 type UserType = {
   id: string;
   email: string;
@@ -42,11 +47,34 @@ const AdminDashboard = () => {
   const pendingOrders = orders.filter(order => order.status === 'pending');
   const totalSales = orders.reduce((sum, order) => sum + order.total, 0);
 
+=======
+const AdminDashboard = () => {
+  const { user, isAdmin, getAllUsers } = useAuth();
+  const navigate = useNavigate();
+  const [deliveredOrders, setDeliveredOrders] = useState<Set<string>>(new Set());
+  
+  if (!user || !isAdmin) {
+    navigate('/login');
+    return null;
+  }
+  
+  const orders = getAllOrders();
+  const allUsers = getAllUsers();
+  const customerCount = allUsers.filter(u => u.role === 'buyer').length;
+  
+  const pendingOrders = orders.filter(order => order.status === 'pending');
+  const totalSales = orders.reduce((sum, order) => sum + order.total, 0);
+  
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
   const handleDeliveryConfirm = (orderId: string) => {
     setOrderDelivered(orderId);
     setDeliveredOrders(prev => new Set(prev).add(orderId));
   };
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
   return (
     <div>
       <Navbar />
@@ -54,9 +82,13 @@ const AdminDashboard = () => {
       <div className="bg-gray-50 py-8">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl font-bold mb-2">Admin Dashboard</h1>
+<<<<<<< HEAD
           <p className="text-gray-500 mb-8">
             Bienvenue à vous, {user?.name || 'Admin'}
           </p>
+=======
+          <p className="text-gray-500 mb-8">Bienvenue à vous, {user.name}</p>
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {/* Stats Cards */}

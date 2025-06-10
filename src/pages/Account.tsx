@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
+=======
+import React, { useState } from 'react';
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
 import { useNavigate } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getOrdersByUser } from '@/data/products';
@@ -8,11 +12,16 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
 const Account = () => {
+<<<<<<< HEAD
   const { user, addFunds, loading } = useAuth();
+=======
+  const { user, addFunds } = useAuth();
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
   const navigate = useNavigate();
   const { toast } = useToast();
   const [fundAmount, setFundAmount] = useState(100);
   
+<<<<<<< HEAD
   useEffect(() => {
     if (!loading && !user) {
       navigate('/login');
@@ -21,6 +30,12 @@ const Account = () => {
   
   if (loading) return <div>Chargement...</div>;
   if (!user) return null; // Redirection déjà faite
+=======
+  if (!user) {
+    navigate('/login');
+    return null;
+  }
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
   
   const orders = getOrdersByUser(user.id);
   

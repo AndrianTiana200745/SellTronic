@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
 import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +12,7 @@ const RegisterForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+<<<<<<< HEAD
   const [role, setRole] = useState('buyer');
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
@@ -63,11 +68,58 @@ const RegisterForm: React.FC = () => {
       }
     } catch (error) {
       toast({ title: 'Erreur', description: 'Erreur serveur', variant: 'destructive' });
+=======
+  const [isLoading, setIsLoading] = useState(false);
+  const { register } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!name || !email || !password || !confirmPassword) {
+      toast({
+        title: 'Error',
+        description: 'Please fill in all fields',
+        variant: 'destructive'
+      });
+      return;
+    }
+    
+    if (password !== confirmPassword) {
+      toast({
+        title: 'Error',
+        description: 'Passwords do not match',
+        variant: 'destructive'
+      });
+      return;
+    }
+    
+    setIsLoading(true);
+    
+    try {
+      await register(name, email, password);
+      toast({
+        title: 'Success',
+        description: 'Your account has been created successfully',
+      });
+      navigate('/account');
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to create account',
+        variant: 'destructive'
+      });
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
     } finally {
       setIsLoading(false);
     }
   };
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
@@ -84,6 +136,10 @@ const RegisterForm: React.FC = () => {
           required
         />
       </div>
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
           Email
@@ -98,6 +154,10 @@ const RegisterForm: React.FC = () => {
           required
         />
       </div>
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
       <div>
         <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
           Mot de passe
@@ -112,6 +172,10 @@ const RegisterForm: React.FC = () => {
           required
         />
       </div>
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
       <div>
         <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
           Confirmation du mot de passe
@@ -126,6 +190,7 @@ const RegisterForm: React.FC = () => {
           required
         />
       </div>
+<<<<<<< HEAD
       <div>
         <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1">
           Rôle
@@ -141,13 +206,20 @@ const RegisterForm: React.FC = () => {
           <option value="admin">Admin</option>
         </select>
       </div>
+=======
+      
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
       <div>
         <button
           type="submit"
           className="w-full bg-selltronic-red text-white py-2 px-4 rounded hover:bg-opacity-90 transition-colors"
           disabled={isLoading}
         >
+<<<<<<< HEAD
           {isLoading ? 'Création de compte...' : 'Créer Compte'}
+=======
+          {isLoading ? 'Creation de compte...' : 'Créer Compte'}
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
         </button>
       </div>
     </form>

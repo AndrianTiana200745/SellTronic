@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
@@ -8,7 +12,11 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
 const AdminProducts = () => {
+<<<<<<< HEAD
   const { user, loading } = useAuth();
+=======
+  const { user, isAdmin } = useAuth();
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const action = searchParams.get('action');
@@ -44,11 +52,18 @@ const AdminProducts = () => {
     setFilteredProducts(filtered);
   }, [searchQuery, allProducts]);
   
+<<<<<<< HEAD
   useEffect(() => {
     if (!loading && (!user || user.role !== 'admin')) {
       navigate('/login');
     }
   }, [user, loading, navigate]);
+=======
+  if (!user || !isAdmin) {
+    navigate('/login');
+    return null;
+  }
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
   
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -123,9 +138,12 @@ const AdminProducts = () => {
     setEditProductId(null);
   };
   
+<<<<<<< HEAD
   if (loading) return <div>Chargement...</div>;
   if (!user || user.role !== 'admin') return null;
   
+=======
+>>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
   return (
     <div>
       <Navbar />
