@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
@@ -27,11 +26,11 @@ const LoginForm: React.FC = () => {
 
       if (response.ok) {
         login({
-          id: data.id, // récupère l'id ici
+          id: data.id,
           email,
           role: data.role,
           name: data.name,
-          balance: data.balance // si tu veux le solde aussi
+          balance: data.balance
         });
         if (data.role === 'admin') {
           navigate('/admin/dashboard');
@@ -40,67 +39,15 @@ const LoginForm: React.FC = () => {
         }
         toast({ title: 'Succès', description: 'Connexion réussie' });
       } else {
-        toast({ title: 'Erreur', description: data.error || 'Erreur lors de la connexion', variant: 'destructive' });
+        toast({ title: 'Erreur', description: data.error || 'Erreur lors de la connexion' });
       }
     } catch (error) {
-      toast({ title: 'Erreur', description: 'Erreur serveur', variant: 'destructive' });
-=======
-
-import React, { useState } from 'react';
-import { useAuth } from '@/context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import { useToast } from '@/hooks/use-toast';
-
-interface LoginFormProps {
-  role: 'buyer' | 'admin';
-}
-
-const LoginForm: React.FC<LoginFormProps> = ({ role }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
-  const navigate = useNavigate();
-  const { toast } = useToast();
-  
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!email || !password) {
-      toast({
-        title: 'Error',
-        description: 'Please fill in all fields',
-        variant: 'destructive'
-      });
-      return;
-    }
-    
-    setIsLoading(true);
-    
-    try {
-      console.log("Login en attente avec :", {email, password: "***"});
-      await login(email, password, role);
-      toast({
-        title: 'Success',
-        description: 'You have successfully logged in',
-      });
-      navigate(role === 'admin' ? '/admin/dashboard' : '/');
-    } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Invalid email or password',
-        variant: 'destructive'
-      });
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
+      toast({ title: 'Erreur', description: 'Erreur serveur' });
     } finally {
       setIsLoading(false);
     }
   };
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
@@ -117,10 +64,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ role }) => {
           required
         />
       </div>
-<<<<<<< HEAD
-=======
-      
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
       <div>
         <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
           Mot de passe
@@ -135,21 +78,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ role }) => {
           required
         />
       </div>
-<<<<<<< HEAD
-=======
-      
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
       <div>
         <button
           type="submit"
           className="w-full bg-selltronic-red text-white py-2 px-4 rounded hover:bg-opacity-90 transition-colors"
           disabled={isLoading}
         >
-<<<<<<< HEAD
           {isLoading ? 'Connexion...' : 'Se connecter'}
-=======
-          {isLoading ? 'Connection...' : 'Se connecter'}
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
         </button>
       </div>
     </form>

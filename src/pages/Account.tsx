@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
-=======
-import React, { useState } from 'react';
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
 import { useNavigate } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getOrdersByUser } from '@/data/products';
@@ -12,50 +8,36 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
 const Account = () => {
-<<<<<<< HEAD
   const { user, addFunds, loading } = useAuth();
-=======
-  const { user, addFunds } = useAuth();
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
   const navigate = useNavigate();
   const { toast } = useToast();
   const [fundAmount, setFundAmount] = useState(100);
-  
-<<<<<<< HEAD
+
   useEffect(() => {
     if (!loading && !user) {
       navigate('/login');
     }
   }, [user, loading, navigate]);
-  
+
   if (loading) return <div>Chargement...</div>;
   if (!user) return null; // Redirection déjà faite
-=======
-  if (!user) {
-    navigate('/login');
-    return null;
-  }
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
-  
+
   const orders = getOrdersByUser(user.id);
-  
+
   const handleAddFunds = () => {
     addFunds(fundAmount);
-    
     toast({
-      title: 'Funds Added',
-      description: `$${fundAmount} has been added to your account`,
+      title: 'Fonds ajoutés',
+      description: `${fundAmount} Ariary ont été ajoutés à votre compte`,
     });
   };
-  
+
   return (
     <div>
-       <Navbar />
-      
+      <Navbar />
       <div className="bg-gray-50 py-8">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl font-bold mb-8">Mon compte</h1>
-          
           <div className="bg-white rounded-lg shadow-sm overflow-hidden">
             <Tabs defaultValue="profile" className="w-full">
               <TabsList className="grid w-full grid-cols-3">
@@ -63,11 +45,9 @@ const Account = () => {
                 <TabsTrigger value="orders">Commandes</TabsTrigger>
                 <TabsTrigger value="balance">Solde</TabsTrigger>
               </TabsList>
-              
               {/* Profile Tab */}
               <TabsContent value="profile" className="p-6">
-                <h2 className="text-xl font-semibold mb-4">Information du profile</h2>
-                
+                <h2 className="text-xl font-semibold mb-4">Information du profil</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -80,7 +60,6 @@ const Account = () => {
                       className="w-full p-2 bg-gray-50 border border-gray-300 rounded"
                     />
                   </div>
-                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Adresse Email
@@ -92,7 +71,6 @@ const Account = () => {
                       className="w-full p-2 bg-gray-50 border border-gray-300 rounded"
                     />
                   </div>
-                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Type de compte
@@ -104,7 +82,6 @@ const Account = () => {
                       className="w-full p-2 bg-gray-50 border border-gray-300 rounded"
                     />
                   </div>
-                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Solde actuel
@@ -117,7 +94,6 @@ const Account = () => {
                     />
                   </div>
                 </div>
-                
                 <div className="mt-6">
                   <h3 className="text-lg font-medium mb-2">Paramètres du compte</h3>
                   <button
@@ -132,11 +108,9 @@ const Account = () => {
                   </button>
                 </div>
               </TabsContent>
-              
               {/* Orders Tab */}
               <TabsContent value="orders" className="p-6">
                 <h2 className="text-xl font-semibold mb-4">Mes commandes</h2>
-                
                 {orders.length === 0 ? (
                   <div className="text-center py-8">
                     <p className="mb-4">Vous n'avez pas encore passé de commande.</p>
@@ -144,7 +118,7 @@ const Account = () => {
                       onClick={() => navigate('/products')}
                       className="bg-selltronic-red text-white px-4 py-2 rounded hover:bg-opacity-90 transition-colors"
                     >
-                      Start Shopping
+                      Commencer mes achats
                     </button>
                   </div>
                 ) : (
@@ -200,11 +174,9 @@ const Account = () => {
                   </div>
                 )}
               </TabsContent>
-              
               {/* Balance Tab */}
               <TabsContent value="balance" className="p-6">
                 <h2 className="text-xl font-semibold mb-4">Solde du compte</h2>
-                
                 <div className="bg-gray-50 p-4 rounded mb-6">
                   <div className="flex justify-between items-center">
                     <div>
@@ -216,10 +188,8 @@ const Account = () => {
                     </div>
                   </div>
                 </div>
-                
                 <div className="mb-6">
                   <h3 className="text-lg font-medium mb-4">Ajout de fonds</h3>
-                  
                   <div className="space-y-4">
                     <div className="grid grid-cols-3 gap-4">
                       <button 
@@ -247,7 +217,6 @@ const Account = () => {
                         200000 Ar
                       </button>
                     </div>
-                    
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
                         Montant Personnalisé (in Ariary)
@@ -260,7 +229,6 @@ const Account = () => {
                         className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-selltronic-red focus:border-transparent"
                       />
                     </div>
-                    
                     <button
                       onClick={handleAddFunds}
                       className="w-full bg-selltronic-red text-white py-2 px-4 rounded hover:bg-opacity-90 transition-colors"
@@ -269,11 +237,10 @@ const Account = () => {
                     </button>
                   </div>
                 </div>
-                
                 <div className="text-sm text-gray-500">
                   <p>
-                    Note: Dans une application réelle, cela se connecterait à une passerrelle de paiement.
-                    A des fins de démonstration, les fonds sont ajoutés directement.
+                    Note: Dans une application réelle, cela se connecterait à une passerelle de paiement.
+                    À des fins de démonstration, les fonds sont ajoutés directement.
                   </p>
                 </div>
               </TabsContent>
@@ -281,7 +248,6 @@ const Account = () => {
           </div>
         </div>
       </div>
-      
       <Footer />
     </div>
   );
