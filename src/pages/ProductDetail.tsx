@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Heart, ShoppingCart, Shield, Package, RefreshCw } from 'lucide-react';
@@ -18,11 +15,8 @@ const ProductDetail = () => {
   const product = getProduct(id || '');
   const { addToCart } = useCart();
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
-<<<<<<< HEAD
   const { user } = useAuth();
-=======
-  const { isAuthenticated } = useAuth();
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
+
   const { toast } = useToast();
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
@@ -49,18 +43,11 @@ const ProductDetail = () => {
   const favorite = isFavorite(product.id);
   
   const handleAddToCart = () => {
-<<<<<<< HEAD
     if (!user) {
       toast({
         title: 'Connexion requise',
         description: 'Veuillez-vous connecter pour ajouter dans le panier'
-=======
-    if(!isAuthenticated) {
-      toast({
-        title : "Connection requis",
-        description : "Veuillez-vous connecter pour ajouter dans le pannier",
-        variant : "destructive"
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
+
       });
       navigate('/login');
       return;
@@ -72,29 +59,18 @@ const ProductDetail = () => {
     }
     
     toast({
-<<<<<<< HEAD
       title: 'Ajouté au panier',
       description: `${quantity} x ${product.name} a été ajouté à votre panier.`
-=======
-      title: 'Added to Cart',
-      description: `${quantity} x ${product.name} added to your cart`,
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
+
     });
   };
   
   const handleFavoriteToggle = () => {
-<<<<<<< HEAD
     if (!user) {
       toast({
         title: "Connexion requise",
         description: "Veuillez-vous connecter pour ajouter dans les favoris"
-=======
-    if(!isAuthenticated){
-      toast({
-        title : "Connection requis",
-        description : "Veuillez-vous connecter pour ajouter dans le favoris",
-        variant : "destructive"
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
+
       });
       navigate('/login');
       return;
@@ -102,24 +78,15 @@ const ProductDetail = () => {
     if (favorite) {
       removeFromFavorites(product.id);
       toast({
-<<<<<<< HEAD
         title: 'Retiré des favoris',
         description: `${product.name} retiré de vos favoris`,
-=======
-        title: 'Removed from Favorites',
-        description: `${product.name} removed from your favorites`,
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
+
       });
     } else {
       addToFavorites(product);
       toast({
-<<<<<<< HEAD
         title: 'Ajouté aux favoris',
         description: `${product.name} ajouté à vos favoris`,
-=======
-        title: 'Added to Favorites',
-        description: `${product.name} added to your favorites`,
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
       });
     }
   };

@@ -1,16 +1,12 @@
-<<<<<<< HEAD
-import React, { useEffect } from 'react';
-=======
 
-import React from 'react';
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
+import React, { useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import { useFavorites } from '@/context/FavoritesContext';
 import ProductGrid from '@/components/products/ProductGrid';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-<<<<<<< HEAD
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,12 +24,7 @@ const Favorites = () => {
   if (loading) return <div>Chargement...</div>;
   if (!user) return null;
 
-=======
 
-const Favorites = () => {
-  const { favorites } = useFavorites();
-  
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
   if (favorites.length === 0) {
     return (
       <div>

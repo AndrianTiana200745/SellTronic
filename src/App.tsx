@@ -17,7 +17,7 @@ import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import { FavoritesProvider } from "./context/FavoritesContext";
-<<<<<<< HEAD
+
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
@@ -60,39 +60,6 @@ const App = () => {
     </QueryClientProvider>
   );
 };
-=======
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <AuthProvider>
-        <CartProvider>
-          <FavoritesProvider>
-            <TooltipProvider>
-              <Toaster />
-              <Sonner />
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/product/:id" element={<ProductDetail />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/favorites" element={<Favorites />} />
-                <Route path="/account" element={<Account />} />
-                <Route path="/admin/dashboard" element={<AdminDashboard />} />
-                <Route path="/admin/products" element={<AdminProducts />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </TooltipProvider>
-          </FavoritesProvider>
-        </CartProvider>
-      </AuthProvider>
-    </BrowserRouter>
-  </QueryClientProvider>
-);
->>>>>>> 1e8cdff7d5aeeba9382d0347a3d3767d54423e74
 
 export default App;
